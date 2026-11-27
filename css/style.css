@@ -40,12 +40,13 @@ h2{font-size:2.3rem;color:var(--gold2);margin-bottom:.4rem}h2::after{content:"";
 .card:hover{border-color:var(--gold)}a.card:hover{transform:translateY(-4px)}
 .ic{width:46px;height:46px;color:var(--gold)}.card h3{font-size:1.5rem}.card p{margin:0;color:var(--mute);font-size:.95rem}
 .badge{align-self:flex-start;font-size:.8rem;color:var(--gold);border:1px solid var(--line);padding:0 .6rem;border-radius:99px}
-.tl{display:grid}
-.ti{position:relative;margin-inline-start:9px;padding-inline-start:1.6rem;padding-bottom:1.7rem}
-.ti:last-child{padding-bottom:0}
-.ti::before{content:"";position:absolute;inset-inline-start:-8px;top:.45rem;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--gold)}
-.ti::after{content:"";position:absolute;inset-inline-start:-1px;width:2px;top:calc(.45rem + 16px);bottom:-.45rem;background:var(--line);transition:background .7s calc(var(--i,0)*.35s)}
-.ti:last-child::after{display:none}.on .ti::after{background:var(--gold)}
+.tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.tl:has(.ti:only-child){grid-template-columns:minmax(0,640px)}
+.ti{position:relative;margin:0;padding:1.7rem 1.5rem 1.4rem;border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden;transition:border-color .25s,transform .25s}
+.ti:hover{border-color:var(--gold);transform:translateY(-3px)}
+.ti::before{content:"";position:absolute;top:1.15rem;inset-inline-end:1.2rem;width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(212,176,106,.18)}
+.ti::after{content:"";position:absolute;top:0;inset-inline-start:0;height:3px;width:0;background:var(--gold);transition:width 1s calc(var(--i,0)*.25s)}
+.on .ti::after{width:100%}.ti time{display:block}
 .ti h3{font-size:1.4rem}.ti p{margin:.1rem 0 0;color:var(--mute)}.ti time{color:var(--gold);font-size:.9rem}
 .lang{display:grid;gap:1.4rem}.lang div{display:grid;gap:.4rem}.lang header{display:flex;justify-content:space-between;gap:1rem}.lang small{color:var(--mute)}
 .bar{position:relative;height:8px;border-radius:9px;background:var(--card);border:1px solid var(--line);overflow:visible}.bar i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
