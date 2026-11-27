@@ -8,7 +8,7 @@ if("IntersectionObserver" in window){
  $$("section[id]").forEach(s=>so.observe(s));
 }else{$$("[data-c]").forEach(cnt);$$("[data-w]").forEach(b=>b.style.width=b.dataset.w+"%")}
 const nv=document.querySelector("nav"),gl=document.querySelector(".globe");
-addEventListener("scroll",()=>{const h=document.documentElement;nv.style.setProperty("--p",h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight)*100+"%");gl.style.transform="translateY(calc(-50% + "+Math.min(scrollY,700)*.22+"px))"},{passive:true});
+let tk=false;addEventListener("scroll",()=>{if(tk)return;tk=true;requestAnimationFrame(()=>{const h=document.documentElement;nv.style.setProperty("--p",h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight)*100+"%");gl.style.transform="translateY(calc(-50% + "+Math.min(scrollY,700)*.22+"px))";tk=false})},{passive:true});
 $$(".card").forEach(c=>c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect();c.style.setProperty("--mx",e.clientX-r.left+"px");c.style.setProperty("--my",e.clientY-r.top+"px")}));
 const fr=document.getElementById("fr"),ph=fr.parentElement;
 if(!rm&&matchMedia("(hover:hover)").matches){ph.addEventListener("pointermove",e=>{const r=ph.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;fr.style.transform=`rotateY(${x*10}deg) rotateX(${-y*8}deg)`});ph.addEventListener("pointerleave",()=>fr.style.transform="")}
