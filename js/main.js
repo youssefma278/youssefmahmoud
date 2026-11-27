@@ -2,11 +2,11 @@ const $$=s=>[...document.querySelectorAll(s)],rm=matchMedia("(prefers-reduced-mo
 $$(".grid,.stats,.tl,.lang,.chips").forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty("--i",i)));
 const cnt=e=>{const n=+e.dataset.c,fm=v=>e.dataset.f?v.toLocaleString("en-US"):v;if(rm){e.textContent=fm(n);return}const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1400);e.textContent=fm(Math.round(n*(1-Math.pow(1-k,3))));if(k<1)requestAnimationFrame(f)})(t0)};
 if("IntersectionObserver" in window){
- const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const x=e.target;x.classList.add("on");x.querySelectorAll("[data-c]").forEach(cnt);x.querySelectorAll("[data-w]").forEach(b=>b.style.width=b.dataset.w+"%");x.querySelectorAll("[data-r]").forEach(c=>c.style.strokeDashoffset=100-c.dataset.r);io.unobserve(x)}),{threshold:.15});
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const x=e.target;x.classList.add("on");x.querySelectorAll("[data-c]").forEach(cnt);x.querySelectorAll("[data-w]").forEach(b=>b.style.width=b.dataset.w+"%");io.unobserve(x)}),{threshold:.15});
  $$(".rv").forEach(x=>io.observe(x));
  const ls=$$("nav a"),so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)ls.forEach(a=>a.classList.toggle("act",a.getAttribute("href")=="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
  $$("section[id]").forEach(s=>so.observe(s));
-}else{$$("[data-c]").forEach(cnt);$$("[data-w]").forEach(b=>b.style.width=b.dataset.w+"%");$$("[data-r]").forEach(c=>c.style.strokeDashoffset=100-c.dataset.r)}
+}else{$$("[data-c]").forEach(cnt);$$("[data-w]").forEach(b=>b.style.width=b.dataset.w+"%")}
 const nv=document.querySelector("nav"),gl=document.querySelector(".globe");
 let tk=false;addEventListener("scroll",()=>{if(tk)return;tk=true;requestAnimationFrame(()=>{const h=document.documentElement;nv.style.setProperty("--p",h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight)*100+"%");gl.style.transform="translateY(calc(-50% + "+Math.min(scrollY,700)*.22+"px))";tk=false})},{passive:true});
 $$(".card").forEach(c=>c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect();c.style.setProperty("--mx",e.clientX-r.left+"px");c.style.setProperty("--my",e.clientY-r.top+"px")}));
